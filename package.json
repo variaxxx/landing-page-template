@@ -1,0 +1,50 @@
+{
+  "name": "landing-page-template",
+  "version": "1.0.0",
+  "description": "A straightforward template for creating landing pages with a Telegram bot using Next.js, grammY and Hono.",
+  "homepage": "https://github.com/variaxxx/landing-page-template#readme",
+  "bugs": {
+    "url": "https://github.com/variaxxx/landing-page-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/variaxxx/landing-page-template.git"
+  },
+  "license": "MIT",
+  "author": "variaxxx",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:client": "next dev ./src/client -p 3000",
+    "dev:server": "tsc-watch -p ./tsconfig.json --onSuccess \"tsx ./src/index.ts\"",
+    "start": "concurrently \"npm:start:*\"",
+    "start:client": "next start ./src/client -p 3000",
+    "start:server": "tsc && tsx ./src/index.ts",
+    "build:client": "next build ./src/client"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.10",
+    "@types/node": "^24.0.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^7.1.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@grammyjs/hydrate": "^1.4.1",
+    "@hono/node-server": "^1.14.4",
+    "grammy": "^1.36.3",
+    "hono": "^4.8.2",
+    "next": "^15.3.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tsx": "^4.20.3",
+    "zod": "^3.25.67"
+  }
+}
