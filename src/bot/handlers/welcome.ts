@@ -7,7 +7,7 @@ composer.command("start", async (ctx) => {
 });
 
 composer.command("id", async (ctx) => {
-  return ctx.reply(`Your ID is: ${ctx.from?.id}`)
-})
+  return ctx.reply(`Your ID is: ${ctx.from?.id}`);
+});
 
 export default composer;

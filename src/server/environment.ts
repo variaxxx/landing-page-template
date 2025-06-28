@@ -1,9 +1,9 @@
-import { Bot } from '../bot/index.js';
-import { ServerConfig } from "../config.js";
+import type { Bot } from "../bot/index.js";
+import type { ServerConfig } from "../config.js";
 
 export interface Env {
   Variables: {
-    config: ServerConfig,
-    bot: Bot
-  }
+    config: ServerConfig;
+    bot: Bot;
+  };
 }

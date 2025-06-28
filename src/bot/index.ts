@@ -1,9 +1,11 @@
-import { hydrate } from "@grammyjs/hydrate";
-import { BotConfig as BotConfig_, Bot as TelegramBot } from "grammy";
-import { BotConfig, config } from "../config.js";
-import { Context } from "./context.js";
+import type { BotConfig } from "../config.js";
+import { config } from "../config.js";
+import type { Context } from "./context.js";
 import handlers from "./handlers/index.js";
 import { session } from "./session.js";
+import { hydrate } from "@grammyjs/hydrate";
+import type { BotConfig as BotConfig_ } from "grammy";
+import { Bot as TelegramBot } from "grammy";
 
 export interface BotDependencies {
   config: BotConfig;
@@ -12,7 +14,7 @@ export interface BotDependencies {
 export function createBot(
   token: string,
   deps: BotDependencies,
-  botConfig?: BotConfig_<Context>
+  botConfig?: BotConfig_<Context>,
 ) {
   const { config } = deps;
 
@@ -29,7 +31,7 @@ export function createBot(
   bot.use(hydrate());
 
   // Errors handler
-  if (config.TG_BOT_MODE == "polling") {
+  if (config.TG_BOT_MODE === "polling") {
     bot.catch(({ ctx, error: err }) => {
       console.error(err);
       if (err instanceof Error) {
@@ -54,6 +56,7 @@ export async function startBot(bot: Bot) {
 
     return bot.start({
       onStart: async () => {
+        // eslint-disable-next-line no-console
         console.log("Bot started in polling mode");
       },
     });

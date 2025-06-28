@@ -1,12 +1,13 @@
-import { serve } from "@hono/node-server";
-import { cors } from "hono/cors";
-import { logger } from "hono/logger";
-import { Bot } from "../bot/index.js";
-import { config, ServerConfig } from "../config.js";
+import type { Bot } from "../bot/index.js";
+import type { ServerConfig } from "../config.js";
+import { config } from "../config.js";
 import { createRouter } from "./create-router.js";
 import botRouter from "./routes/bot.js";
 import healthcheckRouter from "./routes/healthcheck.js";
 import { createWebhookRouter } from "./routes/webhook.js";
+import { serve } from "@hono/node-server";
+import { cors } from "hono/cors";
+import { logger } from "hono/logger";
 
 export interface ServerDependencies {
   bot: Bot;
@@ -18,7 +19,7 @@ export function createServer(deps: ServerDependencies) {
 
   const server = createRouter();
 
-  // Setting up config
+  // Setting up environment
   server.use("*", (c, next) => {
     c.set("bot", bot);
     c.set("config", config);
@@ -32,13 +33,13 @@ export function createServer(deps: ServerDependencies) {
   server.use("*", cors());
 
   // Routes
-  if (config.TG_BOT_MODE == "webhook") {
+  if (config.TG_BOT_MODE === "webhook") {
     server.route(
       "/webhook",
       createWebhookRouter({
         bot,
         config,
-      })
+      }),
     );
   }
   server.route("/healthcheck", healthcheckRouter);
@@ -56,15 +57,16 @@ export function startServer(server: Server) {
         port: config.server.SERVER_PORT,
       },
       (info) => {
-        const url =
-          info.family === "IPv6"
+        const url
+          = info.family === "IPv6"
             ? `http://[${info.address}]:${info.port}`
             : `http://${info.address}:${info.port}`;
 
+        // eslint-disable-next-line no-console
         console.log(`Hono server started on: ${url}`);
 
         resolve({ url });
-      }
+      },
     );
   });
 }

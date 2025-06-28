@@ -1,7 +1,7 @@
-import { HydrateFlavor } from "@grammyjs/hydrate";
-import { Context as DefaultContext, SessionFlavor } from "grammy";
-import { BotConfig } from "../config.js";
-import { Session } from "./session.js";
+import type { BotConfig } from "../config.js";
+import type { Session } from "./session.js";
+import type { HydrateFlavor } from "@grammyjs/hydrate";
+import type { Context as DefaultContext, SessionFlavor } from "grammy";
 
 interface AdditionContextFlavor {
   config: BotConfig;

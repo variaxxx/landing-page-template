@@ -4,14 +4,14 @@ import { z } from "zod/v4";
 const botBaseConfigSchema = z.object({
   DEBUG: z
     .string()
-    .transform((str) => (str === "true" ? true : false))
+    .transform(str => (str === "true"))
     .default(false),
   SERVER_HOST: z.string(),
   SERVER_PORT: z
     .string()
     .transform((str) => {
       const num = Number(str);
-      return isNaN(num) ? 5000 : num;
+      return Number.isNaN(num) ? 5000 : num;
     })
     .default(5000),
   TG_BOT_MODE: z.enum(["polling", "webhook"]),
@@ -24,9 +24,9 @@ const botBaseConfigSchema = z.object({
         .split(",")
         .map((item) => {
           const num = Number(item.trim());
-          return isNaN(num) ? null : num;
+          return Number.isNaN(num) ? null : num;
         })
-        .filter((num) => num !== null);
+        .filter(num => num !== null);
     })
     .default([]),
 });
@@ -48,20 +48,20 @@ const botConfigSchema = botBaseConfigSchema.and(
       TG_BOT_MODE: z.literal("webhook"),
       ...webhookConfigSchema.shape,
     }),
-  ])
+  ]),
 );
 
 const serverConfigSchema = z.object({
   DEBUG: z
     .string()
-    .transform((str) => (str === "true" ? true : false))
+    .transform(str => (str === "true"))
     .default(false),
   SERVER_HOST: z.string(),
   SERVER_PORT: z
     .string()
     .transform((str) => {
       const num = Number(str);
-      return isNaN(num) ? 5000 : num;
+      return Number.isNaN(num) ? 5000 : num;
     })
     .default(5000),
   TG_BOT_MODE: z.enum(["polling", "webhook"]),
@@ -85,9 +85,9 @@ function createConfig() {
     return { bot: botConfig, server: serverConfig };
   } catch (err) {
     if (err instanceof z.ZodError) {
-      const errPaths = err.issues.map((e) => e.path);
+      const errPaths = err.issues.map(e => e.path);
       throw new Error(
-        `Error while parsing environment variables: ${errPaths.join(", ")}`
+        `Error while parsing environment variables: ${errPaths.join(", ")}`,
       );
     }
 

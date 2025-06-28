@@ -15,6 +15,6 @@ try {
   await Promise.all([startBot(bot), startServer(server)]);
 } catch (err) {
   throw new Error(
-    `Error while starting a bot: ${err instanceof Error ? err.message : err}`
+    `Error while starting a bot: ${err instanceof Error ? err.message : err}`,
   );
 }

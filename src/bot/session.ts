@@ -4,8 +4,10 @@ export interface Session {
   isAdmin: boolean;
 }
 
-const initial = (): Session => ({
-  isAdmin: false,
-});
+function initial(): Session {
+  return {
+    isAdmin: false,
+  };
+}
 
 export const session = session_({ initial });
