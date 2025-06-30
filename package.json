@@ -1,7 +1,7 @@
 {
   "name": "landing-page-template",
-  "type": "module",
   "version": "1.0.0",
+  "private": true,
   "description": "A straightforward template for creating landing pages with a Telegram bot using Next.js, grammY and Hono.",
   "author": "variaxxx",
   "license": "MIT",
@@ -10,46 +10,28 @@
     "type": "git",
     "url": "git+https://github.com/variaxxx/landing-page-template.git"
   },
-  "bugs": {
-    "url": "https://github.com/variaxxx/landing-page-template/issues"
-  },
-  "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm:dev:*\"",
-    "dev:client": "next dev ./src/client -p 3000",
-    "dev:server": "tsc-watch -p ./tsconfig.json --onSuccess \"tsx ./src/index.ts\"",
+    "dev:client": "npm run dev --workspace=client",
+    "dev:server": "npm run dev --workspace=server",
     "start": "concurrently \"npm:start:*\"",
-    "start:client": "next start ./src/client -p 3000",
-    "start:server": "tsc && tsx ./src/index.ts",
+    "start:client": "npm run start --workspace=client",
+    "start:server": "npm run start --workspace=client",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "next build ./src/client",
-    "build:server": "tsc",
+    "build:client": "npm run build --workspace=client",
+    "build:server": "npm run build --workspace=server",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "dependencies": {
-    "@grammyjs/hydrate": "^1.4.1",
-    "@hono/node-server": "^1.14.4",
-    "grammy": "^1.36.3",
-    "hono": "^4.8.2",
-    "next": "^15.3.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "tsx": "^4.20.3",
-    "zod": "^3.25.67"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^4.16.1",
-    "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^24.0.3",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
     "concurrently": "^9.2.0",
     "eslint": "^9.30.0",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.10",
-    "ts-node": "^10.9.2",
-    "tsc-watch": "^7.1.1",
     "typescript": "^5.8.3"
-  }
+  },
+  "workspaces": [
+    "apps/client",
+    "apps/server"
+  ]
 }
