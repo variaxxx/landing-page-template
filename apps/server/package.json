@@ -5,7 +5,7 @@
   "main": "main.ts",
   "scripts": {
     "dev": "tsc-watch --onSuccess \"tsx ./src/main.ts\"",
-    "start": "tsc && tsx ./src/index.ts",
+    "start": "tsc && tsx ./src/main.ts",
     "build": "tsc"
   },
   "dependencies": {

@@ -16,7 +16,7 @@
     "dev:server": "npm run dev --workspace=server",
     "start": "concurrently \"npm:start:*\"",
     "start:client": "npm run start --workspace=client",
-    "start:server": "npm run start --workspace=client",
+    "start:server": "npm run start --workspace=server",
     "build": "npm run build:client && npm run build:server",
     "build:client": "npm run build --workspace=client",
     "build:server": "npm run build --workspace=server",
