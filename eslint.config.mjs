@@ -17,6 +17,7 @@ export default antfu({
       "antfu/no-top-level-await": "off",
       "antfu/top-level-function": "warn",
       "node/prefer-global/process": "off",
+      "unused-imports/no-unused-vars": "warn",
     },
   },
   typescript: true,
