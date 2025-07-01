@@ -21,4 +21,5 @@ export default antfu({
   },
   typescript: true,
   jsx: true,
+  ignores: ["apps/server/build/", "apps/client/.next/"],
 });

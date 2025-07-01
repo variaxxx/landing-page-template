@@ -1,6 +1,6 @@
+import { createServer, startServer } from "./api/index.js";
 import { createBot, startBot } from "./bot/index.js";
 import { config } from "./config.js";
-import { createServer, startServer } from "./api/index.js";
 
 const bot = createBot(config.bot.TG_BOT_TOKEN, {
   config: config.bot,
