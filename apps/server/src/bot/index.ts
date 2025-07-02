@@ -61,7 +61,11 @@ export async function startBot(bot: Bot) {
       },
     });
   } else if (config.bot.TG_BOT_MODE === "webhook") {
-    // TODO
+    await bot.init();
+
+    await bot.api.setWebhook(config.bot.WEBHOOK_URL, {
+      secret_token: config.bot.WEBHOOK_SECRET,
+    });
   }
 }
 
