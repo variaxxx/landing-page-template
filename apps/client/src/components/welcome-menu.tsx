@@ -1,12 +1,12 @@
 "use client";
 
-import { useNotifications } from "@/components/notification-container";
+import { useToasts } from "@/components/toasts-container";
 import Button from "@/components/ui/button";
 import axios from "axios";
 import { useState } from "react";
 
 export default function WelcomeMenu() {
-  const { showNotification, NotificationContainer } = useNotifications();
+  const { showToast, ToastsContainer } = useToasts();
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isLocked, setLock] = useState<boolean>(false);
 
@@ -20,7 +20,7 @@ export default function WelcomeMenu() {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/bot/notification`);
 
       if (response.status === 200) {
-        showNotification({
+        showToast({
           info: "Message sent successfully",
           title: "Success",
           type: "success",
@@ -31,7 +31,7 @@ export default function WelcomeMenu() {
       setTimeout(() => setLock(false), 3000);
     } catch (e) {
       console.error(e);
-      showNotification({
+      showToast({
         info: "Something went wrong",
         title: "Error",
         type: "error",
@@ -61,7 +61,7 @@ export default function WelcomeMenu() {
             )
           : "Notification to bot"}
       </Button>
-      <NotificationContainer />
+      <ToastsContainer />
     </div>
   );
 }
