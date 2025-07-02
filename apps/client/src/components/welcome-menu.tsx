@@ -1,7 +1,7 @@
 "use client";
 
 import { useToasts } from "@/components/toasts-container";
-import Button from "@/components/ui/button";
+import Button from "@/ui/button";
 import axios from "axios";
 import { useState } from "react";
 

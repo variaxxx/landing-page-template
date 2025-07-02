@@ -1,6 +1,6 @@
 "use client";
 
-import Toast from "./ui/toast";
+import Toast from "../ui/toast";
 import type { ToastItem, ToastProps } from "@/types/toast.types";
 import { generateRandomId } from "@/utils/generate-id";
 import { useState } from "react";
