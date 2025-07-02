@@ -7,6 +7,7 @@
   --button-color: var(--color-neutral-900);
   --button-accent-color: var(--color-neutral-700);
   --button-text-color: var(--color-neutral-100);
+  --button-disabled-text-color: var(--color-neutral-500);
 
   --secondary-text-color: var(--color-neutral-500);
     --primary-background-color: var(--color-neutral-50);
@@ -16,8 +17,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --font-rubik: var(--font-rubik-sans);
   --spacing: 1px;
 }
@@ -30,6 +29,7 @@
     --button-color: var(--color-neutral-100);
     --button-accent-color: var(--color-neutral-300);
     --button-text-color: var(--color-neutral-950);
+    --button-disabled-text-color: var(--color-neutral-400);
 
     --secondary-text-color: var(--color-neutral-400);
     --primary-background-color: var(--color-neutral-900);

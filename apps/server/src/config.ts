@@ -84,14 +84,9 @@ function createConfig() {
 
     return { bot: botConfig, server: serverConfig };
   } catch (err) {
-    if (err instanceof z.ZodError) {
-      const errPaths = err.issues.map(e => e.path);
-      throw new Error(
-        `Error while parsing environment variables: ${errPaths.join(", ")}`,
-      );
-    }
-
-    throw err;
+    throw new Error(
+      `Error while parsing environment variables: ${err instanceof z.ZodError ? err.message : err}`,
+    );
   }
 }
 

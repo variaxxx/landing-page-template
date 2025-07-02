@@ -1,4 +1,4 @@
-import { geistMono, geistSans, rubik } from "./fonts";
+import { rubik } from "./fonts";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${rubik.variable} antialiased`}
+        className={`${rubik.variable} antialiased overflow-hidden`}
       >
         {children}
       </body>

@@ -13,7 +13,7 @@ export default function Button({
   className,
   ...props
 }: ButtonProps) {
-  const baseStyles = "cursor-pointer bg-(--button-color) hover:bg-(--button-accent-color) text-(--button-text-color) h-[52px] px-[32px] font-rubik active:scale-95 duration-100 ease-in-out rounded-[12px] select-none";
+  const baseStyles = `enabled:cursor-pointer bg-(--button-color) enabled:hover:bg-(--button-accent-color) text-(--button-text-color) h-52 px-32 font-rubik enabled:active:scale-95 transition-all duration-100 rounded-[12px] select-none gap-8 flex items-center justify-center disabled:text-(--button-disabled-text-color) disabled:cursor-not-allowed shadow-xl/30`;
 
   return (
     <button className={clsx(baseStyles, className)} {...props}>
