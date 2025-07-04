@@ -1,7 +1,7 @@
 <h1 align="center">✨ Landing Page Template</h1>
 <p align="center"> A modern full-stack starter powered by <strong>Next.js</strong>, <strong>Hono</strong>, and <strong>grammY</strong>.</p>
 
-<img align="right" width="30%" alt="Image" src="https://github.com/user-attachments/assets/f58236e5-208d-4d2f-bb94-263967c2aefe" />
+<img align="right" width="35%" alt="Image" src="https://github.com/user-attachments/assets/f58236e5-208d-4d2f-bb94-263967c2aefe" />
 
 - [⚙️ Tech Stack](#️-tech-stack)
 - [✅ Features](#-features)
