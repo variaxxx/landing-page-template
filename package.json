@@ -1,0 +1,37 @@
+{
+  "name": "landing-page-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A straightforward template for creating landing pages with a Telegram bot using Next.js, grammY and Hono.",
+  "author": "variaxxx",
+  "license": "MIT",
+  "homepage": "https://github.com/variaxxx/landing-page-template#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/variaxxx/landing-page-template.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:client": "npm run dev --workspace=client",
+    "dev:server": "npm run dev --workspace=server",
+    "start": "concurrently \"npm:start:*\"",
+    "start:client": "npm run start --workspace=client",
+    "start:server": "npm run start --workspace=server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "npm run build --workspace=client",
+    "build:server": "npm run build --workspace=server",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.16.1",
+    "@types/node": "^24.0.3",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.30.0",
+    "typescript": "^5.8.3"
+  },
+  "workspaces": [
+    "apps/client",
+    "apps/server"
+  ]
+}

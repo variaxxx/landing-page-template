@@ -1,0 +1,23 @@
+networks:
+  dev:
+
+services:
+  client:
+    build: ./apps/client/
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - server
+    restart: on-failure
+    networks:
+      - dev
+  
+  server:
+    build: ./apps/server/
+    env_file:
+      - apps/server/.env
+    ports: 
+      - "5000:5000" # edit whether you have a specific server port
+    restart: on-failure
+    networks:
+      - dev
