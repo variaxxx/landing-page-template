@@ -1,0 +1,29 @@
+version: "3.8"
+
+networks:
+  dev:
+
+services:
+  client:
+    build: ./apps/client/
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - server
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:${SERVER_PORT:-5000}
+    restart: on-failure
+    networks:
+      - dev
+  
+  server:
+    build: ./apps/server/
+    ports: 
+      - "${SERVER_PORT:-5000}:${SERVER_PORT:-5000}"
+    environment:
+      - PORT=${SERVER_PORT:-5000}
+    restart: on-failure
+    env_file:
+      - apps/server/.env
+    networks:
+      - dev
