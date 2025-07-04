@@ -12,6 +12,10 @@
   - [4. 🏗️ Build Commands](#4-️-build-commands)
   - [5. 🧼 Linting](#5--linting)
 - [📦 Docker Deployment](#-docker-deployment)
+  - [🐳 1. Build Docker Images](#-1-build-docker-images)
+  - [▶️ 2. Run the Containers](#️-2-run-the-containers)
+  - [⚙️ 3. Environment Configuration](#️-3-environment-configuration)
+  - [🧼 4. Stop the Containers](#-4-stop-the-containers)
 - [📁 Project Structure](#-project-structure)
 
 ## ⚙️ Tech Stack
@@ -37,6 +41,8 @@ Copy the example .env file and update with your values:
 cp apps/server/example.env apps/server/.env
 ```
 Edit .env and provide your configuration (e.g. API URLs, bot token, etc).
+
+Same for the `apps/client/.env`.
 
 ---
 
@@ -112,6 +118,55 @@ npm run lint:fix
 
 ## 📦 Docker Deployment
 This project includes Docker support for both the frontend (Next.js) and backend (Hono + Telegram bot).
+
+---
+
+### 🐳 1. Build Docker Images
+
+Build the images for both client and server:
+```bash
+docker-compose build
+```
+
+Or, if you’re using standalone Docker commands:
+```bash
+# Build client
+cd apps/client
+docker build -t landing-client .
+
+# Build server
+cd apps/server
+docker build -t landing-server .
+```
+
+---
+
+### ▶️ 2. Run the Containers
+Using docker-compose:
+```bash
+docker-compose up
+```
+
+Or manually:
+```bash
+# Run server (API + Telegram bot)
+docker run -d --env-file ./apps/server/.env -p 5000:5000 landing-server
+
+# Run frontend (Next.js)
+docker run -d 3000:3000 landing-client
+```
+
+---
+
+### ⚙️ 3. Environment Configuration
+Ensure that both `apps/client/.env` and `apps/server/.env` are properly configured.
+
+---
+
+### 🧼 4. Stop the Containers
+```bash
+docker-compose down
+```
 
 ## 📁 Project Structure
 

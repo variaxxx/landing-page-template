@@ -69,11 +69,11 @@ const serverConfigSchema = z.object({
 });
 
 function createConfig() {
-  try {
-    process.loadEnvFile();
-  } catch (err) {
-    throw new Error(`Error while loading .env file: ${err}`);
-  }
+  // try {
+  //   process.loadEnvFile();
+  // } catch (err) {
+  //   throw new Error(`Error while loading .env file: ${err}`);
+  // }
 
   try {
     const botConfig = botConfigSchema.parse(process.env);

@@ -6,13 +6,13 @@ WORKDIR /usr
 # BUILDER
 FROM base AS builder
 
-COPY apps/client/package*.json ./apps/client/
+WORKDIR /usr
 
-WORKDIR /usr/apps/client
-RUN npm ci && \
+COPY package*.json ./
+RUN npm i && \
     npm cache clean --force
 
-COPY apps/client ./
+COPY . .
 
 RUN npm run build
 
@@ -21,12 +21,12 @@ FROM base AS runner
 
 WORKDIR /usr
 
-COPY --from=builder /usr/apps/client/public ./public
-COPY --from=builder /usr/apps/client/.next ./.next
-COPY --from=builder /usr/apps/client/package*.json ./
+COPY --from=builder /usr/public ./public
+COPY --from=builder /usr/.next ./.next
+COPY --from=builder /usr/package*.json ./
 
-RUN npm ci --omit-dev
+RUN npm i --omit-dev
 
 EXPOSE 3000
 
-CMD ["node", "build/main.js"]
+CMD ["npm", "start"]
